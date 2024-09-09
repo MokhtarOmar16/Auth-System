@@ -144,3 +144,7 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'core.User'
+
+AUTHENTICATION_BACKENDS = [
+    'core.authentication.EmailOrUsernameModelBackend',
+]
