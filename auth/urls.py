@@ -20,7 +20,8 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('jwt/', include("core.urls"))
+    path('jwt/', include("core.urls")),
+    path('auth/', include('social_django.urls', namespace='social')),
 ] 
 
 if settings.DEBUG:

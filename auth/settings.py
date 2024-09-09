@@ -39,12 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     "debug_toolbar",
+    'social_django',
     'rest_framework_simplejwt',
     'core'
 ]
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,5 +148,10 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = 'core.User'
 
 AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
     'core.authentication.EmailOrUsernameModelBackend',
 ]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '790554687746-59cj3am2gfkb5efeeh05n76g031muu3g.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
