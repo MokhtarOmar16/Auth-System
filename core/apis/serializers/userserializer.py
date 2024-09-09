@@ -18,8 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"password": "Passwords must match."})
         return data
 
-    def create(self, validated_data):
-        # Remove password2 from validated_data as it's not needed for user creation
+    def create(self, validated_data:dict):
         validated_data.pop('password2')
         
         user = User.objects.create_user(
