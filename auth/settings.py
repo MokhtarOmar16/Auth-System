@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.AnonymousUserMiddleware',
 ]
 
 ROOT_URLCONF = 'auth.urls'
@@ -153,3 +154,10 @@ AUTHENTICATION_BACKENDS = [
 ]
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('GOOGLE_CLIENT_ID', default='')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('GOOGLE_CLIENT_SECRET', default='')
+
+# Anonymous User Middleware Settings
+ANONYMOUS_USER_COOKIE_NAME = 'anonymous_session_id'
+ANONYMOUS_USER_COOKIE_MAX_AGE = 60 * 60 * 24 * 365  # 1 year
+ANONYMOUS_USER_COOKIE_HTTPONLY = True
+ANONYMOUS_USER_COOKIE_SECURE = False  # Set to True in production with HTTPS
+ANONYMOUS_USER_COOKIE_SAMESITE = 'Lax'
